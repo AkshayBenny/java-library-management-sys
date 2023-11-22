@@ -1,38 +1,44 @@
-class Book {
-  private String title;
-  private String author;
-  private boolean isAvailable;
+import java.utils.ArrayList;
 
+class PhysicalResource extends LibraryResource {
+  private ArrayList<String> damages = new ArrayList<>();
+  private String bookCoverType;
+  private String shelfLocation;
+  private String dimensions;
+  
 
-  public Book(String title, String author){
-    this.title = title;
-    this.author = author;
-    this.isAvailable = true;
+  public PhysicalResource(String title, String description, String author, boolan isAvailable, String genre, String isbn, int numPages, String publisher, String publishedYear, String language) {
+    super(title, description, author, isAvailable, genre, isbn, numPages, publisher, publishedYear, language);
+
+    this.bookCoverType = bookCoverType;
+    this.shelfLocation = shelfLocation;
   }
 
- // Accessors
- public String getTitle() { 
-  return title;
- }
+  // Accesors
+  public String getBookCoverType() {
+    return bookCoverType;
+  }
 
- public String getAuthor() {
-   return author;
- }
+  public String getShelfLocation() {
+    return shelfLocation;
+  }
 
- public boolean isAvailable() {
-   return isAvailable;
- }
+  public String getDimensions() {
+    return dimensions;
+  }
 
- //Mutators
- public void setTitle(String title){
-   this.title = title;
- }
 
- public void setAuthor(String author){
-   this.author = author;
- }
+  // Mutators
+  public void setBookCoverType(String bookCoverType) {
+    this.bookCoverType = bookCoverType;
+  }
 
- public void setIsAvailable(boolean isAvailable){
-   this.isAvailable = isAvailable;
- }
+  public void setShelfLocation(String shelfLocation) {
+    this.shelfLocation = shelfLocation;
+  }
+
+  public void setDimensions(String dimensions) {
+    this.dimensions = dimensions;
+  }
+
 }
