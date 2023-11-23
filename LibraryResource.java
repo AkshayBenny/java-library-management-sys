@@ -3,20 +3,20 @@ import java.util.UUID;
 
 class LibraryResource {
   protected String title;
-  protected String description;
-  protected String author;
-  protected boolean isAvailable;
+  private String description;
+  protected Author author;
+  private boolean isAvailable;
   protected String genre;
   private String resourceId;
-  protected String isbn;
-  protected int numPages;
-  protected String publisher;
-  protected String publishedYear;
-  protected String language;
-  protected ArrayList<String> checkedOutBy = new ArrayList<>();
+  private String isbn;
+  private int numPages;
+  private String publisher;
+  private String publishedYear;
+  private String language;
+  private ArrayList<String> checkedOutBy = new ArrayList<>();
 
   // Initialise
-  public LibraryResource(String title, String author, String genre) {
+  public LibraryResource(String title, Author author, String genre) {
     this.resourceId = UUID.randomUUID().toString();
     this.title = title;
     this.author = author;
@@ -32,7 +32,7 @@ class LibraryResource {
     return description;
   }
 
-  public String getAuthor() {
+  public Author getAuthor() {
     return author;
   }
 
@@ -68,6 +68,9 @@ class LibraryResource {
     return language;
   }
 
+  public ArrayList<String> getCheckedOutBy() {
+    return new ArrayList<>(checkedOutBy);
+  }
 
   // Mutators
   public void setTitle(String title) {
@@ -78,7 +81,7 @@ class LibraryResource {
     this.description = description;
   }
  
-  public void setAuthor(String author) {
+  public void setAuthor(Author author) {
     this.author = author;
   }
 
@@ -108,5 +111,13 @@ class LibraryResource {
 
   public void setLanguage(String language) {
     this.language = language;
+  }
+
+  public void addCheckedOutBy(String person) {
+    this.checkedOutBy.add(person);
+  }
+
+  public void removeCheckedOutBy(String person) {
+    this.checkedOutBy.remove(person);
   }
 }
