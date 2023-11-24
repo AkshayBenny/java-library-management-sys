@@ -21,8 +21,24 @@ class Member {
     return lastName;
   }
 
+  public String getMemberId() {
+    return memberId;
+  }
+
   public ArrayList<LibraryResource> getResourcesUsed() {
     return resourcesUsed;
+  }
+
+  public void printResourcesUsed() {
+    if (resourcesUsed.isEmpty()) {
+      System.out.printf("This member currently has not borrowed any resources.\n");
+    } else {
+      int resourceCounter = 1;
+      System.out.printf("The following are the resources borrowed by the member:");
+      for (LibraryResource resource : resourcesUsed) {
+        System.out.printf("%d) %s by %s", resourceCounter, resource.getTitle(), resource.getAuthor());
+      }
+    }
   }
 
   public void getMemberDetails() {
@@ -37,6 +53,10 @@ class Member {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
   }
 
   public void addResource(LibraryResource resource){
