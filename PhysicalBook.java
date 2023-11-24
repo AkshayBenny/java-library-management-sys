@@ -48,6 +48,14 @@ class PhysicalResource extends LibraryResource {
       System.out.printf("Dimensions: %s", dimensions);
     }
 
+    if(!damages.isEmpty() {
+      System.out.printf("Damages recieved: \n");
+      int damageCounter = 1;
+      for (String damage : damages) {
+        System.out.printf("%s", damage);
+        damageCounter ++;
+      }
+    })
   }
 
   // Mutators
@@ -61,6 +69,14 @@ class PhysicalResource extends LibraryResource {
 
   public void setDimensions(String dimensions) {
     this.dimensions = dimensions;
+  }
+
+  public void addDamage(String damage) {
+    this.damages.add(damage);
+  }
+
+  public void removeDamage(String, damage) {
+    this.damage.remove(damage);
   }
 
 }
