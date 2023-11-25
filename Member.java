@@ -5,6 +5,8 @@ class Member {
   private String lastName;
   private String memberId;
   private ArrayList<LibraryResource> resourcesUsed = new ArrayList<>();
+  private ArrayList<PhysicalResource> physicalResourcesUsed = new ArrayList<>();
+  private ArrayList<ElectronicResource> electornicResourcesUsed = new ArrayList<>();
 
   public Member(String firstName, String lastName, String memberId) {
     this.firstName = firstName;
@@ -34,7 +36,7 @@ class Member {
       System.out.printf("This member currently has not borrowed any resources.\n");
     } else {
       int resourceCounter = 1;
-      System.out.printf("The following are the resources borrowed by the member:");
+      System.out.printf("The following are the resources borrowed by the member:\n");
       for (LibraryResource resource : resourcesUsed) {
         System.out.printf("%d) %s by %s", resourceCounter, resource.getTitle(), resource.getAuthor());
       }
