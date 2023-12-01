@@ -1,6 +1,8 @@
 /**
  * This class holds details about the Electornic resources such as pdfs,
  * journals etc.
+ * This class extends the LibraryResource class and adds additional methods and
+ * data members
  *
  * @author Akshay
  * @version 1.0
@@ -12,6 +14,10 @@ class ElectronicResource extends LibraryResource {
 
   /**
    * Constructor for objects of class ElectronicResource
+   * 
+   * @param title  Title of resource
+   * @param author Author of resource
+   * @param genre  Genre of resource
    */
   public ElectronicResource(String title, Author author, String genre) {
     super(title, author, genre);

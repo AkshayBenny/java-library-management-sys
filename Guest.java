@@ -14,6 +14,10 @@ class Guest {
 
   /**
    * Constructor for objects of class Guest
+   * 
+   * @param firstName      first name
+   * @param lastName       last name
+   * @param accessDuration duration of access given to this guest
    */
   public Guest(String firstName, String lastName, int accessDuration) {
     this.firstName = firstName;

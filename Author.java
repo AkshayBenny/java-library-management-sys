@@ -15,7 +15,9 @@ class Author {
     private ArrayList<String> publications = new ArrayList<>();
 
     /**
-     * Constructor for objects of class Author
+     * Constructor for object of class Author
+     * @param firstName first name
+     * @param lastName last name
      */
     public Author(String firstName, String lastName) {
         this.firstName = firstName;

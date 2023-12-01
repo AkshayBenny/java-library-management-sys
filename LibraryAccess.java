@@ -1,47 +1,78 @@
 import java.util.Calendar;
 import java.util.Date;
 
-public class LibraryAccess 
-{
-    private int duration; 
+/**
+ * This class manages the access duration to a library and tracks its expiry.
+ * It allows setting the duration of access and calculates the expiry date based
+ * on that duration.
+ *
+ * @author Akshay
+ * @version 1.0
+ */
+public class LibraryAccess {
+    private int duration;
     private Date expiryDate;
 
-    public LibraryAccess(int duration) 
-    {
+    /**
+     * Constructor for LibraryAccess.
+     * Initializes a new LibraryAccess instance with a specified duration.
+     *
+     * @param duration Duration of access in days. Must be a positive number.
+     */
+    public LibraryAccess(int duration) {
         setDuration(duration);
         calculateExpiryDate();
     }
 
-    public void setDuration(int duration) 
-    {
-        if (duration > 0 && duration <= 3) {
+    /**
+     * Sets the duration of access to the library.
+     * If the duration is negative, an error message is printed.
+     *
+     * @param duration Duration of access in days. Must be a positive number.
+     */
+    public void setDuration(int duration) {
+        if (duration > 0) {
             this.duration = duration;
         } else {
-            throw new IllegalArgumentException("Duration must be between 1 and 3 days.");
+            System.out.println("Duration cannot be a negative number.");
         }
     }
 
-    private void calculateExpiryDate() 
-    {
+    /**
+     * Calculates and sets the expiry date based on the current date and the
+     * duration.
+     */
+    private void calculateExpiryDate() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH, duration);
         this.expiryDate = calendar.getTime();
     }
 
-    public boolean isExpired() 
-    {
+    /**
+     * Checks if the library access has expired based on the current date.
+     *
+     * @return true if the current date is after the expiry date, false otherwise.
+     */
+    public boolean isExpired() {
         Date currentDate = new Date();
         return currentDate.after(expiryDate);
     }
 
-    public int getDuration() 
-    {
+    /**
+     * Retrieves the duration of library access.
+     *
+     * @return Duration of access in days.
+     */
+    public int getDuration() {
         return duration;
     }
 
-    public Date getExpiryDate() 
-    {
+    /**
+     * Retrieves the expiry date of the library access.
+     *
+     * @return Expiry date as a Date object.
+     */
+    public Date getExpiryDate() {
         return expiryDate;
     }
-
 }

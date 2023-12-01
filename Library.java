@@ -152,9 +152,7 @@ class Library {
   }
 
   /**
-   * An accessor to get the resources available.
-   *
-   * @return array list of resources created
+   * An accessor to search for a particular resource by title.
    */
   public void searchByResourceTitle(String title) {
     int resourcesFound = 0;
@@ -169,6 +167,9 @@ class Library {
     System.out.printf("%d resources found!", resourcesFound);
   }
 
+  /**
+   * An accessor to search for a particular resource by author's last name.
+   */
   public void searchByAuthorLastName(String lastName) {
     int resourcesFound = 0;
     for (LibraryResource resource : resources) {
@@ -183,6 +184,9 @@ class Library {
     System.out.printf("%d resources found", resourcesFound);
   }
 
+  /**
+   * An accessor to print all available resources.
+   */
   public void getAllAvailableResources() {
     ArrayList<LibraryResource> availableResources = new ArrayList<>();
     int availableResourceCounter = 1;
@@ -203,11 +207,20 @@ class Library {
     }
   }
 
+  /**
+   * An accessor to get the number of resources in the library.
+   *
+   * @return int number of resources in the library
+   */
   public int getNumberOfResources() {
     return resources.size();
   }
 
-  // Mutators
+  /**
+   * A mutator to append a new resource to the list of resources
+   *
+   * @param resource resource to be added
+   */
   public void addResource(LibraryResource resource) {
     if (resources.contains(resource)) {
       System.out.println("This resource already exists!");
@@ -216,6 +229,11 @@ class Library {
     this.resources.add(resource);
   }
 
+  /**
+   * A mutator to remove a resource from the list of resources
+   *
+   * @param resource resource to be removed
+   */
   public void removeResource(LibraryResource resource) {
     if (resources.contains(resource) && resourcesOnLoan.contains(resource)) {
       System.out.println("This resource is currently out on loan.");
@@ -226,6 +244,12 @@ class Library {
     }
   }
 
+  /**
+   * A mutator to remove a resource from the list of resources from a particular
+   * index
+   *
+   * @param index index of resource to be removed
+   */
   public void removeResourceAtIndex(int index) {
     if (index - 1 >= resources.size() || index <= 0) {
       System.out.println("Index is invalid or out of range!");
@@ -239,12 +263,23 @@ class Library {
     }
   }
 
+  /**
+   * A mutator to add people to the list of peoples
+   *
+   * @param people people object to be added
+   */
   public void addPeople(Object people) {
     this.peoples.add(people);
   }
 
+  /**
+   * A mutator to show the functionality of borrowing a book
+   *
+   * @param person  Object of person borrowing the book
+   * @param bookNum index of the book to be borrowed from the resources array list
+   */
   public void borrowBook(Object person, int bookNum) {
-    if (bookNum - 1 < resources.size() && bookNum > 0) {
+    if (bookNum <= resources.size() && bookNum >= 0) {
       LibraryResource myBook = resources.get(bookNum - 1);
       if (myBook instanceof ElectronicResource && person instanceof Guest) {
         Guest guest = (Guest) person;
@@ -264,6 +299,12 @@ class Library {
     }
   }
 
+  /**
+   * A mutator to show the functionality of borrowing a physical book
+   *
+   * @param book   Object of book to be borrowed
+   * @param member Object of member borrowing the book
+   */
   public void borrowPhysicalResource(PhysicalResource book, Member member) {
     if (!resources.contains(book)) {
       System.out.println("This book is not in the library database.");
@@ -282,13 +323,19 @@ class Library {
     System.out.println("Book has been successfully lent to " + member.getFullName());
   }
 
+  /**
+   * A mutator to show the functionality of returning a book
+   *
+   * @param book              Object of book to be returned
+   * @param hasDamage         boolean indicating whether the book is currently
+   *                          damaged or not
+   * @param damageDescription a description of damage if any
+   */
   public void returnPhysicalBook(PhysicalResource book, boolean hasDamage, String damageDescription) {
     if (!resources.contains(book)) {
       System.out.println("This book is not currently in the library!");
       return;
     }
-
-    // borrowers.remove(); -- complete later
 
     if (hasDamage && damageDescription != null && !damageDescription.trim().isEmpty()) {
       book.addDamage(damageDescription);
@@ -297,6 +344,13 @@ class Library {
     resourcesOnLoan.remove(book);
   }
 
+  /**
+   * A mutator to set the first name of the author of a particular resource
+   *
+   * @param newFirstName the new first name of the author of the resource
+   * @param resource     the resource belonging to the author whose first name is
+   *                     to be changed
+   */
   public void setAuthorFirstName(String newFirstName, LibraryResource resource) {
     if (!resources.contains(resource)) {
       System.out.println("Resource not found in the resource database!");
@@ -312,6 +366,12 @@ class Library {
 
   }
 
+  /**
+   * A mutator to add a particular resource which was given out on loan to a
+   * member
+   *
+   * @param resource Resource to be loaned
+   */
   public void addResourceOnLoan(LibraryResource resource) {
     if (resources.contains(resource)) {
       System.out.println("This resource does not exit in the database!");
@@ -322,6 +382,12 @@ class Library {
     }
   }
 
+  /**
+   * A mutator to remove a particular resource from the array list representing
+   * the resources given out on loan
+   *
+   * @param resource Resource to be loaned
+   */
   public void removeResourceOnLoan(LibraryResource resource) {
     if (resourcesOnLoan.contains(resource)) {
       resourcesOnLoan.remove(resource);
