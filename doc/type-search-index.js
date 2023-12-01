@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"LibraryAccess"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Author"},{"p":"<Unnamed>","l":"ElectronicResource"},{"p":"<Unnamed>","l":"Guest"},{"p":"<Unnamed>","l":"Library"},{"p":"<Unnamed>","l":"LibraryAccess"},{"p":"<Unnamed>","l":"LibraryResource"},{"p":"<Unnamed>","l":"Member"},{"p":"<Unnamed>","l":"PhysicalResource"}];updateSearchResults();
