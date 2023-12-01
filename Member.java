@@ -4,9 +4,7 @@ class Member {
   private String firstName;
   private String lastName;
   private String memberId;
-  private ArrayList<LibraryResource> resourcesUsed = new ArrayList<>();
-  private ArrayList<PhysicalResource> physicalResourcesUsed = new ArrayList<>();
-  private ArrayList<ElectronicResource> electornicResourcesUsed = new ArrayList<>();
+  private ArrayList<LibraryResource> resourcesBorrowed = new ArrayList<>();
 
   public Member(String firstName, String lastName, String memberId) {
     this.firstName = firstName;
@@ -23,29 +21,41 @@ class Member {
     return lastName;
   }
 
+  public String getFullName() {
+    return this.firstName + " " + this.lastName;
+  }
+
   public String getMemberId() {
     return memberId;
   }
 
-  public ArrayList<LibraryResource> getResourcesUsed() {
-    return resourcesUsed;
+  public ArrayList<LibraryResource> printResourcesUsed() {
+    return resourcesBorrowed;
   }
 
-  public void printResourcesUsed() {
-    if (resourcesUsed.isEmpty()) {
-      System.out.printf("This member currently has not borrowed any resources.\n");
-    } else {
-      int resourceCounter = 1;
-      System.out.printf("The following are the resources borrowed by the member:\n");
-      for (LibraryResource resource : resourcesUsed) {
-        System.out.printf("%d) %s by %s", resourceCounter, resource.getTitle(), resource.getAuthor());
-      }
-    }
+  public int getNumberOfResourcesBorrowed() {
+    return resourcesBorrowed.size();
   }
 
   public void getMemberDetails() {
     System.out.printf("Member name is %s %s\n", firstName, lastName);
     System.out.printf("Member ID is %s\n", memberId);
+
+    if (resourcesBorrowed.size() > 0) {
+      System.out.println("The following are the resources borrowed by the member:");
+      for (LibraryResource resource : resourcesBorrowed) {
+        resource.getDetails();
+      }
+    }
+  }
+
+  public void printResourcesUsed() {
+    if (resourcesBorrowed.size() > 0) {
+      System.out.println("The following are the resources borrowed by the member:");
+      for (LibraryResource resource : resourcesBorrowed) {
+        resource.getDetails();
+      }
+    }
   }
 
   // Mutators
@@ -61,12 +71,20 @@ class Member {
     this.memberId = memberId;
   }
 
-  public void addResource(LibraryResource resource){
-    this.resourcesUsed.add(resource);
+  public void addResource(LibraryResource resource) {
+    if (!resourcesBorrowed.contains(resource)) {
+      this.resourcesBorrowed.add(resource);
+    } else {
+      System.out.println("This resource already exists");
+    }
   }
 
-  public void removeResource(LibraryResource resource){
-    this.resourcesUsed.remove(resource);
+  public void removeResource(LibraryResource resource) {
+    if (resourcesBorrowed.contains(resource)) {
+      this.resourcesBorrowed.remove(resource);
+    } else {
+      System.out.println("This resource does not exist.");
+    }
   }
 
 }
